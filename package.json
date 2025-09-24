@@ -1,0 +1,33 @@
+{
+  "name": "home-rental-web-app-final-2",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./views/input.css -o ./public/output.css --minify",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "npm run build:css"
+  },
+  "keywords": [],
+  "author": "Suryansh Poranik",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.3",
+    "connect-mongodb-session": "^5.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.2.1",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.4",
+    "multer": "^2.0.2"
+  },
+  "description": "Home rental web app using Node.js, Express, MongoDB, and Tailwind CSS"
+}

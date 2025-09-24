@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <header class="sticky-top bg-danger text-white">
+        <nav class="container navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="/">MyHouse</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <% if (isLoggedIn) { %>
+                    <% if (user && user.userType === 'guest') { %>
+                    <li class="nav-item">
+                        <a class="nav-link <%= currentPage === 'Home' ? 'active' : '' %>" href="/homes">Homes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <%= currentPage === 'favourites' ? 'active' : '' %>"
+                            href="/favourites">Favourites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <%= currentPage === 'bookings' ? 'active' : '' %>"
+                            href="/bookings">Bookings</a>
+                    </li>
+                    <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link <%= currentPage === 'host-homes' ? 'active' : '' %>"
+                            href="/host/host-home-list">Host Homes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <%= currentPage === 'addHome' ? 'active' : '' %>" href="/host/add-home">Add Home</a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-md-0">
+                    <% if (!isLoggedIn) { %>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light me-2 <%= currentPage === 'signup' ? 'active' : '' %>"
+                            href="/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light text-danger <%= currentPage === 'login' ? 'active' : '' %>"
+                            href="/login">Login</a>
+                    </li>
+                    <% } else { %>
+                    <li class="nav-item">
+                        <form action="/logout" method="POST" class="d-flex">
+                            <button type="submit" class="btn btn-outline-light">Logout</button>
+                        </form>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>
